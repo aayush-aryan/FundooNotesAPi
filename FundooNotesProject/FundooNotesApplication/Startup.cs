@@ -54,7 +54,7 @@ namespace FundooNotesApplication
             services.AddTransient<ILabelBL, LabelBL>();
             services.AddSingleton<ResponseModel>();
             services.AddTransient<NoteRL>();
-            services.AddStackExchangeRedisCache(options =>
+            services.AddStackExchangeRedisCache(options =>  
             {
                 options.Configuration = "localhost:6379";
                 services.AddMemoryCache();
@@ -117,7 +117,6 @@ namespace FundooNotesApplication
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //Checks if the current host environment name is Microsoft.Extensions.Hosting.EnvironmentName.Development.
-            //
             if (env.IsDevelopment())
             {
                 //This middleware is used reports app runtime errors in development environment.
