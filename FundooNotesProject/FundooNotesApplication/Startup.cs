@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using NLog.Extensions.Logging;
+//using NLog.Extensions.Logging;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
@@ -100,11 +100,13 @@ namespace FundooNotesApplication
                     ValidateAudience = false
                 };
             });
+            /*
             services.AddLogging(builder => 
                 {
                     builder.SetMinimumLevel(LogLevel.Information);
                     builder.AddNLog("nlog.config");
                 });
+            */
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

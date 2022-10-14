@@ -8,6 +8,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using NLog;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
 using System;
@@ -28,16 +29,19 @@ namespace FundooNotesApplication.Controllers
         ResponseModel responseModel;
         private readonly IMemoryCache memoryCache;
         private readonly IDistributedCache distributedCache;
-        ILogger<UserEntity> logger;
+        // ILogger<UserEntity> logger;
+        public static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public UserController(IUserBL userBL, FundooDBContext fundooDBContext, ResponseModel responseModel, IMemoryCache memoryCache, IDistributedCache distributedCache, ILogger<UserEntity> logger)
+        private readonly ILogger<UserController> _logger;
+
+        public UserController(IUserBL userBL, FundooDBContext fundooDBContext, ResponseModel responseModel, IMemoryCache memoryCache, IDistributedCache distributedCache, ILogger<UserController> _logger)
         {
             this.fundooDBContext = fundooDBContext;
             this.UserBL = userBL;
             this.responseModel = responseModel;
             this.memoryCache = memoryCache;
             this.distributedCache=distributedCache;
-            this.logger = logger;
+            this._logger = _logger;
         }
 
         [HttpPost("Register")]
@@ -65,18 +69,25 @@ namespace FundooNotesApplication.Controllers
         [HttpPost("login")]
         public IActionResult LoginUser(LoginModel loginModel)
         {
-            logger.LogInformation("hhvjhj");
+          //  Logger.LogInformation("hhvjhj");
             try
             {
                 var userdata = UserBL.LoginUser(loginModel);
                 if (userdata != null)
                 {
+                    _logger.LogInformation("User registers in DB");
                     return this.Ok(new { ResponseCode = "200", massage = "Success", SecurityToken = $"{userdata}" });
+                    _logger.LogDebug("Debug is Successful");
+                    _logger.LogError("error msg");
+                    _logger.LogWarning("error");
                 }
+                _logger.LogInformation("User not register in DB");
                 return this.NotFound(new { ResponseCode = "404", message = $"Email And PassWord Is Invalid" });
+                throw new Exception("Error Occured");
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.ToString());
                 throw ex;
             }
         }

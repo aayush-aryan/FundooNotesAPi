@@ -21,6 +21,7 @@ F:\bridgelabz_Customs\FundooNotesProject\CommonLayer\obj\Debug\netcoreapp3.1\Com
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.deps.json
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+F:\FundooProject_APi\FundooNotesProject\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.csproj.AssemblyReference.cache
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.GeneratedMSBuildEditorConfig.editorconfig
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfoInputs.cache
 F:\FundooProject_APi\FundooNotesProject\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfo.cs
